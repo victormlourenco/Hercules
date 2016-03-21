@@ -568,6 +568,8 @@ struct Battle_Config {
 
 	int feature_enable_attendance_system;
 	int feature_attendance_endtime;
+
+	int display_fake_hp_when_dead;
 };
 
 /* criteria for battle_config.idletime_critera */
