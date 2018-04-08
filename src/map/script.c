@@ -6879,7 +6879,7 @@ BUILDIN(heal)
 
 	hp=script_getnum(st,2);
 	sp=script_getnum(st,3);
-	status->heal(&sd->bl, hp, sp, 1);
+	status->heal(&sd->bl, hp, sp, STATUS_HEAL_FORCED);
 	return true;
 }
 /*==========================================
@@ -18389,7 +18389,7 @@ BUILDIN(setunitdata)
 			md->level = val;
 			break;
 		case UDT_HP:
-			status->set_hp(bl, (unsigned int) val, 0);
+			status->set_hp(bl, (unsigned int) val, STATUS_HEAL_DEFAULT);
 			clif->charnameack(0, &md->bl);
 			break;
 		case UDT_MAXHP:
@@ -18397,7 +18397,7 @@ BUILDIN(setunitdata)
 			clif->charnameack(0, &md->bl);
 			break;
 		case UDT_SP:
-			status->set_sp(bl, (unsigned int) val, 0);
+			status->set_sp(bl, (unsigned int) val, STATUS_HEAL_DEFAULT);
 			break;
 		case UDT_MAXSP:
 			md->status.max_sp = (unsigned int) val;
@@ -18558,13 +18558,13 @@ BUILDIN(setunitdata)
 			hd->homunculus.level = (short) val;
 			break;
 		case UDT_HP:
-			status->set_hp(bl, (unsigned int) val, 0);
+			status->set_hp(bl, (unsigned int) val, STATUS_HEAL_DEFAULT);
 			break;
 		case UDT_MAXHP:
 			hd->homunculus.max_hp = val;
 			break;
 		case UDT_SP:
-			status->set_sp(bl, (unsigned int) val, 0);
+			status->set_sp(bl, (unsigned int) val, STATUS_HEAL_DEFAULT);
 			break;
 		case UDT_MAXSP:
 			hd->homunculus.max_sp = val;
@@ -18697,13 +18697,13 @@ BUILDIN(setunitdata)
 			pd->pet.level = (short) val;
 			break;
 		case UDT_HP:
-			status->set_hp(bl, (unsigned int) val, 0);
+			status->set_hp(bl, (unsigned int) val, STATUS_HEAL_DEFAULT);
 			break;
 		case UDT_MAXHP:
 			pd->status.max_hp = (unsigned int) val;
 			break;
 		case UDT_SP:
-			status->set_sp(bl, (unsigned int) val, 0);
+			status->set_sp(bl, (unsigned int) val, STATUS_HEAL_DEFAULT);
 			break;
 		case UDT_MAXSP:
 			pd->status.max_sp = (unsigned int) val;
@@ -18831,13 +18831,13 @@ BUILDIN(setunitdata)
 			mc->base_status.size = (unsigned char) val;
 			break;
 		case UDT_HP:
-			status->set_hp(bl, (unsigned int) val, 0);
+			status->set_hp(bl, (unsigned int) val, STATUS_HEAL_DEFAULT);
 			break;
 		case UDT_MAXHP:
 			mc->base_status.max_hp = (unsigned int) val;
 			break;
 		case UDT_SP:
-			status->set_sp(bl, (unsigned int) val, 0);
+			status->set_sp(bl, (unsigned int) val, STATUS_HEAL_DEFAULT);
 			break;
 		case UDT_MAXSP:
 			mc->base_status.max_sp = (unsigned int) val;
@@ -18965,13 +18965,13 @@ BUILDIN(setunitdata)
 			ed->base_status.size = (unsigned char) val;
 			break;
 		case UDT_HP:
-			status->set_hp(bl, (unsigned int) val, 0);
+			status->set_hp(bl, (unsigned int) val, STATUS_HEAL_DEFAULT);
 			break;
 		case UDT_MAXHP:
 			ed->base_status.max_hp = (unsigned int) val;
 			break;
 		case UDT_SP:
-			status->set_sp(bl, (unsigned int) val, 0);
+			status->set_sp(bl, (unsigned int) val, STATUS_HEAL_DEFAULT);
 			break;
 		case UDT_MAXSP:
 			ed->base_status.max_sp = (unsigned int) val;
@@ -19097,13 +19097,13 @@ BUILDIN(setunitdata)
 			nd->level = (unsigned short) val;
 			break;
 		case UDT_HP:
-			status->set_hp(bl, (unsigned int) val, 0);
+			status->set_hp(bl, (unsigned int) val, STATUS_HEAL_DEFAULT);
 			break;
 		case UDT_MAXHP:
 			nd->status.max_hp = (unsigned int) val;
 			break;
 		case UDT_SP:
-			status->set_sp(bl, (unsigned int) val, 0);
+			status->set_sp(bl, (unsigned int) val, STATUS_HEAL_DEFAULT);
 			break;
 		case UDT_MAXSP:
 			nd->status.max_sp = (unsigned int) val;
@@ -20378,7 +20378,7 @@ BUILDIN(mercenary_heal) {
 	hp = script_getnum(st,2);
 	sp = script_getnum(st,3);
 
-	status->heal(&sd->md->bl, hp, sp, 0);
+	status->heal(&sd->md->bl, hp, sp, STATUS_HEAL_DEFAULT);
 	return true;
 }
 
